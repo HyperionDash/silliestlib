@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "silliestlib",
+	"version": "${version}",
+	"name": "SilliestLib",
+	"description": "A small Library mod for my own projects.",
+	"authors": [
+		"HyperionDash"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/project/DfBoWxnI",
+		"sources": "https://github.com/HyperionDash/silliestlib",
+		"issues":  "https://github.com/HyperionDash/silliestlib/issues"
+	},
+	"license": "ARR",
+	"icon": "assets/silliestlib/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.hyper.silliestlib.SilliestLib"
+		]
+	},
+	"mixins": [
+		"silliestlib.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": ">=26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
