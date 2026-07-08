@@ -3,7 +3,6 @@ package net.hyper.silliestlib.utils;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
 
@@ -11,7 +10,7 @@ import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant
 
 public interface SilliestLibDataUtils {
     static void createTrivialCubeWithItemModel(Block block, BlockModelGenerators blockModelGenerators) {
-        blockModelGenerators.createTrivialBlock(block, TexturedModel.CUBE);
+        blockModelGenerators.createTrivialCube(block);
         blockModelGenerators.registerSimpleItemModel(block, ModelTemplates.CUBE_ALL.getDefaultModelLocation(block));
     }
     static void createStandaloneStairs(Block block, Block texture, BlockModelGenerators blockModelGenerators) {
