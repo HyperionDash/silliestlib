@@ -10,10 +10,54 @@
 
 ## <p align="center">Project Info</p>
 
+
+<details>
+<summary>Features</summary>
+<div align="left">
+
+### Misc Features
+- Double Handed Component
+    - when added to an item and held, it makes the players armPose visually appear like you are holding the item with both hands.
+- Compat Blocks/Items
+    - these blocks/items function almost identical to their vanilla counterparts, but instead being disabled if a modId isnt loaded into the game.
+- Custom wall model templates
+    - these function identical to vanilla walls, with the addition of a seperate top texture.
+
+### SilliestLibDataUtils
+Some simple utils for block model generation
+
+### SilliestLibRegUtils
+A group of registry methods, made to avoid repetetive code
+- Blocks
+    - BlockIds
+- BlockItems
+    - BlockItemIds
+- Items
+    - ItemIds
+- Entities
+    - Entity Sub Predicates
+    - Block Entities
+    - EntityTypeIds
+- Components
+- Effects
+    - Potions
+    - Potion Recipes
+- Particles
+- Sounds
+    - Jukebox Songs
+- Custom Stats
+- Recipe Serializers
+- Villagers
+    - POIs
+- Keybinds
+- Armor Materials
+</div>
+</details>
+
+
 <details>
 <summary>How to add SilliestLib to your projects.</summary>
 <div align="left">
-NOTE: the project is not currently published on modrinth, and so this example will not work at the moment, please use "implementation files()" to add the mod jar from your files to your project of the plain "implementation"
 
 ## build.gradle
 We start in your build.gradle, where you add this as your repositories block.
@@ -45,22 +89,22 @@ In your gradle.properties, you now need to add the mod version, this changes wit
 ```properties
 silliestlib_version=5C7uJjvj
 ```
-This is technically optional and can replace "${project.silliestlib_version}" in the build.gradle instead of being here, but is cleaner to do here.
+This is technically optional and can replace `${project.silliestlib_version}` in the build.gradle instead of being here, but is cleaner to do here.
 
 ## fabric.mod.json
-To make sure people can debug issues when SilliestLib is missing, remember to add the mod into the dependencies block, due to my versioning scheme not matching the semantic version format, make sure you have to version as "*" or it wont work :p
+To make sure people can debug issues when SilliestLib is missing, remember to add the mod into the dependencies block, due to my versioning scheme not matching the semantic version format, make sure you have to version as `*` or it wont work :p
 ```json
 "depends": {
-    "silliestlib": "*"
+"silliestlib": "*"
 }
 ```
 
 ## Your ModInitializer
-Before you can start any modding, in the "onInitialize()" method of your ModInitializer you have to add one simple line.
+Before you can start any modding, in the `onInitialize()` method of your ModInitializer you have to add one simple line.
 ```java
 init(MOD_ID);
 ```
-Alternatively, "MOD_ID" can be replaced with either a string of your modId or a call to where you store your modId.
+Alternatively, `MOD_ID` can be replaced with either a string of your modId or a call to where you store your modId.
 </div>
 </details>
 
