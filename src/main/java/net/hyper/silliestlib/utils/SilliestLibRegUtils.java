@@ -49,6 +49,16 @@ import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public interface SilliestLibRegUtils {
+    static ResourceKey<Block> getRK(Block block) {
+        return BuiltInRegistries.BLOCK.getResourceKey(block).get();
+    }
+    static ResourceKey<Item> getRK(Item item) {
+        return BuiltInRegistries.ITEM.getResourceKey(item).get();
+    }
+    static ResourceKey<EntityType<?>> getRK(EntityType entityType) {
+        return BuiltInRegistries.ENTITY_TYPE.getResourceKey(entityType).get();
+    }
+
     static Block regBlock(BlockItemId id, Function<BlockBehaviour.Properties, Block> function) {
         return Registry.register(BuiltInRegistries.BLOCK, id.block(), function.apply(BlockBehaviour.Properties.of().setId(id.block())));
     }
