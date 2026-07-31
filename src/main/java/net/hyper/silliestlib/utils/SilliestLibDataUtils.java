@@ -1,9 +1,11 @@
 package net.hyper.silliestlib.utils;
 
 import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import static net.minecraft.client.data.models.BlockModelGenerators.plainVariant;
@@ -12,6 +14,18 @@ public interface SilliestLibDataUtils {
     static void createTrivialCubeWithItemModel(Block block, BlockModelGenerators blockModelGenerators) {
         blockModelGenerators.createTrivialCube(block);
         blockModelGenerators.registerSimpleItemModel(block, ModelTemplates.CUBE_ALL.getDefaultModelLocation(block));
+    }
+    static void generateFlatItemModel(Item item, ItemModelGenerators itemModelGenerators) {
+        itemModelGenerators.generateFlatItem(item, ModelTemplates.FLAT_ITEM);
+    }
+    static void generateFlatHandheldItemModel(Item item, ItemModelGenerators itemModelGenerators) {
+        itemModelGenerators.generateFlatItem(item, ModelTemplates.FLAT_HANDHELD_ITEM);
+    }
+    static void generateFlatHandheldRodItemModel(Item item, ItemModelGenerators itemModelGenerators) {
+        itemModelGenerators.generateFlatItem(item, ModelTemplates.FLAT_HANDHELD_ROD_ITEM);
+    }
+    static void generateMusicDiscModel(Item item, ItemModelGenerators itemModelGenerators) {
+        itemModelGenerators.generateFlatItem(item, ModelTemplates.MUSIC_DISC);
     }
     static void createStandaloneStairs(Block block, Block texture, BlockModelGenerators blockModelGenerators) {
         final TextureMapping textureMapping = TextureMapping.cube(texture);
