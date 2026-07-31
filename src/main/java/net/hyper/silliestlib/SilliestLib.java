@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class SilliestLib implements ModInitializer {
 	public static final String MOD_ID = "silliestlib";
-	public static String CURRENT_MOD_ID = "";
+	public static String CURRENT_MOD_ID = "fallback";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static void init(String modId) {
 		CURRENT_MOD_ID = modId;
