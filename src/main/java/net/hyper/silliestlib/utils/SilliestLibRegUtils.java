@@ -55,7 +55,7 @@ public interface SilliestLibRegUtils {
     static ResourceKey<Item> getRK(Item item) {
         return BuiltInRegistries.ITEM.getResourceKey(item).get();
     }
-    static ResourceKey<EntityType<?>> getRK(EntityType entityType) {
+    static ResourceKey<EntityType<?>> getRK(EntityType<?> entityType) {
         return BuiltInRegistries.ENTITY_TYPE.getResourceKey(entityType).get();
     }
 
