@@ -65,7 +65,7 @@ public interface SilliestLibRegUtils {
     static Block regBlock(String id, Function<BlockBehaviour.Properties, Block> function) {
         return Registry.register(BuiltInRegistries.BLOCK, SilliestLib.cid(id), function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, SilliestLib.cid(id)))));
     }
-    static ResourceKey<Block> regBlockId(String key) {
+    static ResourceKey<Block> createBlockId(String key) {
         return ResourceKey.create(Registries.BLOCK, SilliestLib.cid(key));
     }
     static Item regBlockItem(BlockItemId id, Function<Item.Properties, Item> function) {
@@ -74,11 +74,11 @@ public interface SilliestLibRegUtils {
     static Item regSimpleBlockItem(BlockItemId id, Block block) {
         return regBlockItem(id, properties -> new BlockItem(block,properties));
     }
-    static BlockItemId regBlockItemId(String blockId, String itemId) {
+    static BlockItemId createBlockItemId(String blockId, String itemId) {
         return BlockItemId.create(SilliestLib.cid(blockId), SilliestLib.cid(itemId));
     }
-    static BlockItemId regBlockItemId(final String id) {
-        return regBlockItemId(id, id);
+    static BlockItemId createBlockItemId(String id) {
+        return createBlockItemId(id, id);
     }
     static Item regItem(ResourceKey<Item> key, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, key, function.apply(new Item.Properties().setId(key)));
@@ -86,7 +86,7 @@ public interface SilliestLibRegUtils {
     static Item regItem(String id, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, SilliestLib.cid(id), function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, SilliestLib.cid(id)))));
     }
-    static ResourceKey<Item> regItemId(final String key) {
+    static ResourceKey<Item> createItemId(String key) {
         return ResourceKey.create(Registries.ITEM, SilliestLib.cid(key));
     }
     static <T extends Entity> EntityType<T> regEntityType(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
@@ -108,16 +108,19 @@ public interface SilliestLibRegUtils {
     static <T extends EntitySubPredicate> Codec<T> regEntitySubPredicateType(String id, Codec<T> codec) {
         return Registry.register(BuiltInRegistries.ENTITY_SUB_PREDICATE_TYPE, SilliestLib.cid(id), codec);
     }
-    static <T extends BlockEntityType<?>> T regBlockEntity(ResourceKey<BlockEntityType<?>> key, T blockEntityType) {
+    static <T extends BlockEntityType<?>> T regBlockEntityType(ResourceKey<BlockEntityType<?>> key, T blockEntityType) {
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, key.identifier(), blockEntityType);
     }
-    static <T extends BlockEntityType<?>> T regBlockEntity(String id, T blockEntityType) {
+    static <T extends BlockEntityType<?>> T regBlockEntityType(String id, T blockEntityType) {
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, SilliestLib.cid(id), blockEntityType);
     }
-    static ResourceKey<EntityType<?>> regEntityTypeId(String key) {
+    static void addSupportedBlocks(BlockEntityType<?> type, Block... blocks) {
+        for(Block block : blocks) type.addValidBlock(block);
+    }
+    static ResourceKey<EntityType<?>> createEntityTypeId(String key) {
         return ResourceKey.create(Registries.ENTITY_TYPE, SilliestLib.cid(key));
     }
-    static <T>DataComponentType<T> regComponent(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
+    static <T>DataComponentType<T> regDataComponentType(String id, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
         return Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, SilliestLib.cid(id), builderOperator.apply(DataComponentType.builder()).build());
     }
     static Holder<MobEffect> regEffect(String id, MobEffect effect) {
@@ -160,9 +163,6 @@ public interface SilliestLibRegUtils {
     static ArmorMaterial createArmorMaterial(String id, int boots, int legs, int chest, int helm, int body, int enchantmentValue, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, TagKey<Item> repairIngredient) {
         ResourceKey<? extends Registry<EquipmentAsset>> registryKey = ResourceKey.createRegistryKey(Identifier.parse("equipment_asset"));
         ResourceKey<EquipmentAsset> armorKey = ResourceKey.create(registryKey, SilliestLib.cid(id));
-        return new ArmorMaterial(28, makeDefense(boots, legs, chest, helm, body), enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, armorKey);
-    }
-    static Map<ArmorType, Integer> makeDefense(int boots, int legs, int chest, int helm, int body) {
-        return Maps.newEnumMap(Map.of(ArmorType.BOOTS, boots, ArmorType.LEGGINGS, legs, ArmorType.CHESTPLATE, chest, ArmorType.HELMET, helm, ArmorType.BODY, body));
+        return new ArmorMaterial(28, Maps.newEnumMap(Map.of(ArmorType.BOOTS, boots, ArmorType.LEGGINGS, legs, ArmorType.CHESTPLATE, chest, ArmorType.HELMET, helm, ArmorType.BODY, body)), enchantmentValue, equipSound, toughness, knockbackResistance, repairIngredient, armorKey);
     }
 }

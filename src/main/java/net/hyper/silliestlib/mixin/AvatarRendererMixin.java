@@ -19,7 +19,6 @@ public abstract class AvatarRendererMixin {
             cancellable = true
     )
     private static void silliestLib$doubleHandedPose(Avatar player, ItemStack stack, InteractionHand hand, CallbackInfoReturnable<HumanoidModel.ArmPose> cir) {
-        if (player.getMainHandItem().has(SilliestLibDataComponents.DOUBLE_HANDED))
-            cir.setReturnValue(HumanoidModel.ArmPose.CROSSBOW_CHARGE);
+        if (player.getMainHandItem().has(SilliestLibDataComponents.DOUBLE_HANDED)) cir.setReturnValue(HumanoidModel.ArmPose.CROSSBOW_CHARGE);
     }
 }
