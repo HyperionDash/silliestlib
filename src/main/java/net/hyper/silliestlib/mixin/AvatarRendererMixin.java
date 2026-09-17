@@ -13,11 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AvatarRenderer.class)
 public abstract class AvatarRendererMixin {
-    @Inject(
-            method = "getArmPose(Lnet/minecraft/world/entity/Avatar;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/client/model/HumanoidModel$ArmPose;",
-            at = @At("TAIL"),
-            cancellable = true
-    )
+    @Inject(method = "getArmPose(Lnet/minecraft/world/entity/Avatar;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/client/model/HumanoidModel$ArmPose;", at = @At("TAIL"), cancellable = true)
     private static void silliestLib$doubleHandedPose(Avatar player, ItemStack stack, InteractionHand hand, CallbackInfoReturnable<HumanoidModel.ArmPose> cir) {
         if (player.getMainHandItem().has(SilliestLibDataComponents.DOUBLE_HANDED)) cir.setReturnValue(HumanoidModel.ArmPose.CROSSBOW_CHARGE);
     }
