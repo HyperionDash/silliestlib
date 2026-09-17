@@ -2,14 +2,13 @@ package net.hyper.silliestlib.compat.block;
 
 import net.hyper.silliestlib.SilliestLib;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.BushBlock;
 
 import java.util.List;
 
-public abstract class CompatFaceAttachedHorizontalDirectionalBlock extends FaceAttachedHorizontalDirectionalBlock {
+public class CompatBushBlock extends BushBlock {
     public final List<String> MODIDS;
-    public CompatFaceAttachedHorizontalDirectionalBlock(String modId, BlockBehaviour.Properties properties) {
+    public CompatBushBlock(String modId, Properties properties) {
         super(properties);
         this.MODIDS = List.of(modId);
     }

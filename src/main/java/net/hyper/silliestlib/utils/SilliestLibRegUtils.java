@@ -6,7 +6,6 @@ import com.mojang.serialization.Codec;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PoiHelper;
-import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.hyper.silliestlib.SilliestLib;
 import net.minecraft.advancements.predicates.entity.EntitySubPredicate;
 import net.minecraft.client.KeyMapping;
@@ -34,7 +33,6 @@ import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -128,9 +126,6 @@ public interface SilliestLibRegUtils {
     }
     static Holder<Potion> regPotion(String id, Potion potion) {
         return Registry.registerForHolder(BuiltInRegistries.POTION, SilliestLib.cid(id), potion);
-    }
-    static void regPotionRecipe(Holder<Potion> input, Ingredient ingredient, Holder<Potion> output) {
-        FabricPotionBrewingBuilder.BUILD.register(builder -> {builder.registerPotionRecipe(input, ingredient, output);});
     }
     static SimpleParticleType regParticle(String id, SimpleParticleType particleType) {
         return Registry.register(BuiltInRegistries.PARTICLE_TYPE, SilliestLib.cid(id), particleType);

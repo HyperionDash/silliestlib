@@ -3,13 +3,12 @@ package net.hyper.silliestlib.compat.block;
 import net.hyper.silliestlib.SilliestLib;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.List;
 
 public class CompatFenceBlock extends FenceBlock {
     public final List<String> MODIDS;
-    public CompatFenceBlock(String modId, BlockBehaviour.Properties properties) {
+    public CompatFenceBlock(String modId, Properties properties) {
         super(properties);
         this.MODIDS = List.of(modId);
     }

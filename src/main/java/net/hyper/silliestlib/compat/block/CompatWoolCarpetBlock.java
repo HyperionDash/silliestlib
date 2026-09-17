@@ -4,13 +4,12 @@ import net.hyper.silliestlib.SilliestLib;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.WoolCarpetBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.List;
 
 public class CompatWoolCarpetBlock extends WoolCarpetBlock {
     public final List<String> MODIDS;
-    public CompatWoolCarpetBlock(String modId, DyeColor color, BlockBehaviour.Properties properties) {
+    public CompatWoolCarpetBlock(String modId, DyeColor color, Properties properties) {
         super(color, properties);
         this.MODIDS = List.of(modId);
     }

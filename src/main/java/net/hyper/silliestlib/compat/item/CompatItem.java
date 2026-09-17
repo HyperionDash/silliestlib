@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CompatItem extends Item {
     public final List<String> MODIDS;
-    public CompatItem(String modId, Item.Properties properties) {
+    public CompatItem(String modId, Properties properties) {
         super(properties);
         this.MODIDS = List.of(modId);
     }
