@@ -5,13 +5,12 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.boat.AbstractBoat;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.BoatItem;
-import net.minecraft.world.item.Item;
 
 import java.util.List;
 
 public class CompatBoatItem extends BoatItem {
     public final List<String> MODIDS;
-    public CompatBoatItem(String modId, EntityType<? extends AbstractBoat> entityType, Item.Properties properties) {
+    public CompatBoatItem(String modId, EntityType<? extends AbstractBoat> entityType, Properties properties) {
         super(entityType, properties);
         this.MODIDS = List.of(modId);
     }
