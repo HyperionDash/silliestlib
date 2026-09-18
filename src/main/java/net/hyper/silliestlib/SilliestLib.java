@@ -14,9 +14,7 @@ public class SilliestLib implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static void init(String modId) {
 		CURRENT_MOD_ID = modId;
-		if (CURRENT_MOD_ID != MOD_ID) {
-			LOGGER.info("Loading SilliestLib for " + CURRENT_MOD_ID);
-		}
+		if (CURRENT_MOD_ID != MOD_ID) LOGGER.info("Loading SilliestLib for {}", CURRENT_MOD_ID);
 	}
 	public static Identifier cid(String path) {
 		return Identifier.fromNamespaceAndPath(CURRENT_MOD_ID, path);

@@ -1,7 +1,6 @@
 package net.hyper.silliestlib.utils;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
-import net.fabricmc.loader.api.FabricLoader;
 import net.hyper.silliestlib.SilliestLib;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -16,6 +15,6 @@ public interface SilliestLibMiscUtils {
         int igniteOdds = FlammableBlockRegistry.getInstance(instance).get(baseBlock).getIgniteOdds();
         int burnOdds = FlammableBlockRegistry.getInstance(instance).get(baseBlock).getBurnOdds();
         FlammableBlockRegistry.getDefaultInstance().add(block, igniteOdds, burnOdds);
-        if (FabricLoader.getInstance().isDevelopmentEnvironment()) SilliestLib.LOGGER.debug("igniteOdds("+igniteOdds+") and burnOdds("+burnOdds+") for "+getRK(block).identifier()+" successfully copied from "+getRK(baseBlock).identifier());
+        SilliestLib.LOGGER.debug("igniteOdds({}) and burnOdds({}) for {} successfully copied from {}", igniteOdds, burnOdds, getRK(block).identifier(), getRK(baseBlock).identifier());
     }
 }
