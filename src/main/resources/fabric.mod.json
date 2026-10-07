@@ -12,7 +12,7 @@
 		"sources": "https://github.com/HyperionDash/silliestlib",
 		"issues":  "https://github.com/HyperionDash/silliestlib/issues"
 	},
-	"license": "ARR",
+	"license": "Silliest License",
 	"icon": "assets/silliestlib/icon.png",
 	"environment": "*",
 	"entrypoints": {
