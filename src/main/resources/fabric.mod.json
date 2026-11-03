@@ -16,7 +16,7 @@
 	"icon": "assets/silliestlib/icon.png",
 	"environment": "*",
 	"depends": {
-		"fabricloader": ">=0.20.1",
+		"fabricloader": ">=0.19.5",
 		"minecraft": "~26.1.2",
 		"java": ">=25",
 		"fabric-api": "*"
@@ -28,6 +28,7 @@
 				"Wiki": "https://github.com/HyperionDash/silliestlib/wiki"
 			},
 			"badges": [ "library" ]
-		}
+		},
+		"launchpad:compatible": true
 	}
 }
