@@ -1,0 +1,13 @@
+license = "Silliest License"
+[[mods]]
+modId = "silliestlib"
+version = "2.0b+26.1.2"
+displayName = "SilliestLib"
+description = '''A small Library mod used in Silliest SMP mods.'''
+[[dependencies.silliestlib]]
+modId = "launchpad"
+type = "required"
+ordering = "NONE"
+side = "BOTH"
+[properties]
+"launchpad:placeholder" = true

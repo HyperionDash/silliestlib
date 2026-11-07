@@ -11,9 +11,12 @@ public class SilliestLib {
 	public static String CURRENT_MOD_ID = "fallback";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static void init(String modId) {
+	public static void init(String modId, String displayName) {
 		CURRENT_MOD_ID = modId;
-		if (CURRENT_MOD_ID != MOD_ID) LOGGER.info("Loading SilliestLib for {}", CURRENT_MOD_ID);
+		if (CURRENT_MOD_ID != MOD_ID) LOGGER.info("Loading SilliestLib for {}", displayName);
+	}
+	public static void init(String modId) {
+		init(modId, modId);
 	}
 	public static Identifier cid(String path) {
 		return Identifier.fromNamespaceAndPath(CURRENT_MOD_ID, path);
