@@ -14,22 +14,22 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
-public class SilliestLibEquipmentAssetProvider implements DataProvider {
+public abstract class SilliestLibEquipmentAssetProvider implements DataProvider {
     private final FabricPackOutput.PathProvider pathProvider;
-    private final FabricPackOutput output;
+    private final FabricPackOutput packOutput;
 
     public SilliestLibEquipmentAssetProvider(FabricPackOutput packOutput) {
         this.pathProvider = packOutput.createPathProvider(FabricPackOutput.Target.RESOURCE_PACK, "equipment");
-        this.output = packOutput;
+        this.packOutput = packOutput;
     }
 
-    public void generateEquipmentAssets(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer) {}
+    protected abstract void generateEquipmentAssets(BiConsumer<ResourceKey<EquipmentAsset>, EquipmentClientInfo> consumer);
 
     public EquipmentClientInfo onlyHumanoid(final String id) {
-        return EquipmentClientInfo.builder().addHumanoidLayers(Identifier.fromNamespaceAndPath(output.getModId(), id)).build();
+        return EquipmentClientInfo.builder().addHumanoidLayers(Identifier.fromNamespaceAndPath(packOutput.getModId(), id)).build();
     }
     public EquipmentClientInfo humanoidAndMountArmor(final String id) {
-        return EquipmentClientInfo.builder().addHumanoidLayers(Identifier.fromNamespaceAndPath(output.getModId(), id)).addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, EquipmentClientInfo.Layer.leatherDyeable(Identifier.fromNamespaceAndPath(output.getModId(), id), false)).addLayers(EquipmentClientInfo.LayerType.NAUTILUS_BODY, new EquipmentClientInfo.Layer[]{EquipmentClientInfo.Layer.leatherDyeable(Identifier.fromNamespaceAndPath(output.getModId(), id), false)}).build();
+        return EquipmentClientInfo.builder().addHumanoidLayers(Identifier.fromNamespaceAndPath(packOutput.getModId(), id)).addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, EquipmentClientInfo.Layer.leatherDyeable(Identifier.fromNamespaceAndPath(packOutput.getModId(), id), false)).addLayers(EquipmentClientInfo.LayerType.NAUTILUS_BODY, new EquipmentClientInfo.Layer[]{EquipmentClientInfo.Layer.leatherDyeable(Identifier.fromNamespaceAndPath(packOutput.getModId(), id), false)}).build();
     }
 
     @Override

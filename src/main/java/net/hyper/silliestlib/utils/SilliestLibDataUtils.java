@@ -45,6 +45,9 @@ public interface SilliestLibDataUtils {
     static void createStandaloneSlab(Block block, Block fullBlock, Block texture, BlockModelGenerators blockModelGenerators) {
         createStandaloneSlab(block, fullBlock, TextureMapping.getBlockTexture(texture), blockModelGenerators);
     }
+    static void createStandaloneSlab(Block block, Block fullBlock, BlockModelGenerators blockModelGenerators) {
+        createStandaloneSlab(block, fullBlock, fullBlock, blockModelGenerators);
+    }
     static void createStandaloneWall(Block block, TextureMapping textureMapping, BlockModelGenerators blockModelGenerators) {
         final Identifier wallPost = ModelTemplates.WALL_POST.create(block, textureMapping, blockModelGenerators.modelOutput);
         final Identifier wallSide = ModelTemplates.WALL_LOW_SIDE.create(block, textureMapping, blockModelGenerators.modelOutput);

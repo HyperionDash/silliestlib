@@ -18,6 +18,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.stats.Stat;
@@ -46,6 +47,7 @@ import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.item.trading.TradeSet;
 import net.minecraft.world.item.trading.VillagerTrade;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -75,7 +77,7 @@ public interface SilliestLibRegUtils {
         int igniteOdds = FlammableBlockRegistry.getInstance(instance).get(baseBlock).getIgniteOdds();
         int burnOdds = FlammableBlockRegistry.getInstance(instance).get(baseBlock).getBurnOdds();
         FlammableBlockRegistry.getInstance(instance).add(block, igniteOdds, burnOdds);
-        SilliestLib.LOGGER.debug("igniteOdds({}) and burnOdds({}) for {} successfully copied from {}", igniteOdds, burnOdds, BuiltInRegistries.BLOCK.getResourceKey(block).get().identifier(), BuiltInRegistries.BLOCK.getResourceKey(block).get().identifier());
+        SilliestLib.LOGGER.debug("igniteOdds({}) and burnOdds({}) for {} successfully copied from {}", igniteOdds, burnOdds, getBlockKey(baseBlock), getBlockKey(block));
     }
     static void addFlammableBlockFromExistingBlock(Block block, Block baseBlock) {
         addFlammableBlockFromExistingBlock(Blocks.FIRE, block, baseBlock);
@@ -89,8 +91,20 @@ public interface SilliestLibRegUtils {
     static Item regBlockItem(String id, Function<Item.Properties, Item> func, Item.Properties properties) {
         return regItem(id, func, properties.useBlockDescriptionPrefix());
     }
+    static Item regBlockItem(String id, Block block, Item.Properties properties) {
+        return regBlockItem(id, p -> new BlockItem(block, p), properties);
+    }
     static Item regBlockItem(String id, Block block) {
-        return regBlockItem(id, p -> new BlockItem(block, p), new Item.Properties());
+        return regBlockItem(id, block, new Item.Properties());
+    }
+    static Item regBlockItem(Block block, Item.Properties properties) {
+        return regBlockItem(getBlockName(block), p -> new BlockItem(block, p), properties);
+    }
+    static Item regBlockItem(Block block) {
+        return regBlockItem(getBlockName(block), block, new Item.Properties());
+    }
+    static <T extends Fluid> T regFluid(String id, T fluid) {
+        return Registry.register(BuiltInRegistries.FLUID, createFluidKey(id), fluid);
     }
     static <T extends Entity> EntityType<T> regEntityType(String id, EntityType.Builder<T> builder) {
         return Registry.register(BuiltInRegistries.ENTITY_TYPE, SilliestLib.cid(id), builder.build(createEntityTypeKey(id)));
@@ -231,5 +245,17 @@ public interface SilliestLibRegUtils {
     }
     static ResourceKey<VillagerTrade> createVillagerTradeKey(String id) {
         return createResourceKey(Registries.VILLAGER_TRADE, id);
+    }
+    static Identifier getBlockKey(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
+    }
+    static String getBlockName(Block block) {
+        return getBlockKey(block).getPath();
+    }
+    static Identifier getItemKey(ItemLike itemLike) {
+        return BuiltInRegistries.ITEM.getKey(itemLike.asItem());
+    }
+    static String getItemName(ItemLike itemLike) {
+        return getItemKey(itemLike).getPath();
     }
 }

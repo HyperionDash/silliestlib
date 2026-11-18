@@ -15,75 +15,82 @@ import net.minecraft.world.level.block.entity.BannerPattern;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.structure.Structure;
-import org.jspecify.annotations.NonNull;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.concurrent.CompletableFuture;
 
-public class SilliestLibTagsProvider {
-    public static class BannerPatternTagsProvider extends FabricTagsProvider<BannerPattern> {
+@SuppressWarnings("NullableProblems")
+public abstract class SilliestLibTagsProvider {
+    public static abstract class BannerPatternTagsProvider extends FabricTagsProvider<BannerPattern> {
         public BannerPatternTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.BANNER_PATTERN, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class BiomeTagsProvider extends FabricTagsProvider<Biome> {
+    public static abstract class BiomeTagsProvider extends FabricTagsProvider<Biome> {
         public BiomeTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.BIOME, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class DamageTypeTagsProvider extends FabricTagsProvider<DamageType> {
+    public static abstract class DamageTypeTagsProvider extends FabricTagsProvider<DamageType> {
         public DamageTypeTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.DAMAGE_TYPE, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class EnchantmentTagsProvider extends FabricTagsProvider<Enchantment> {
+    public static abstract class EnchantmentTagsProvider extends FabricTagsProvider<Enchantment> {
         public EnchantmentTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.ENCHANTMENT, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class ConfiguredFeatureTagsProvider extends FabricTagsProvider<ConfiguredFeature<?, ?>> {
+    public static abstract class FluidTagsProvider extends FabricTagsProvider<Fluid> {
+        public FluidTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+            super(output, Registries.FLUID, registryLookupFuture);
+        }
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
+    }
+    public static abstract class ConfiguredFeatureTagsProvider extends FabricTagsProvider<ConfiguredFeature<?, ?>> {
         public ConfiguredFeatureTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.CONFIGURED_FEATURE, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class GameEventTagsProvider extends FabricTagsProvider<GameEvent> {
+    public static abstract class GameEventTagsProvider extends FabricTagsProvider<GameEvent> {
         public GameEventTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.GAME_EVENT, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class InstrumentTagsProvider extends FabricTagsProvider<Instrument> {
+    public static abstract class InstrumentTagsProvider extends FabricTagsProvider<Instrument> {
         public InstrumentTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.INSTRUMENT, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class PaintingVariantTagsProvider extends FabricTagsProvider<PaintingVariant> {
+    public static abstract class PaintingVariantTagsProvider extends FabricTagsProvider<PaintingVariant> {
         public PaintingVariantTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.PAINTING_VARIANT, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class PoiTypeTagsProvider extends FabricTagsProvider<PoiType> {
+    public static abstract class PoiTypeTagsProvider extends FabricTagsProvider<PoiType> {
         public PoiTypeTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.POINT_OF_INTEREST_TYPE, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class StructureTagsProvider extends FabricTagsProvider<Structure> {
+    public static abstract class StructureTagsProvider extends FabricTagsProvider<Structure> {
         public StructureTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.STRUCTURE, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
-    public static class VillagerTradeTagsProvider extends FabricTagsProvider<VillagerTrade> {
+    public static abstract class VillagerTradeTagsProvider extends FabricTagsProvider<VillagerTrade> {
         public VillagerTradeTagsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
             super(output, Registries.VILLAGER_TRADE, registryLookupFuture);
         }
-        @Override protected void addTags(HolderLookup.@NonNull Provider registries) {}
+        @Override protected abstract void addTags(HolderLookup.Provider registries);
     }
 }
