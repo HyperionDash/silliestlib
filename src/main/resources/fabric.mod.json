@@ -15,6 +15,14 @@
 	"license": "Silliest License",
 	"icon": "assets/silliestlib/icon.png",
 	"environment": "*",
+	"entrypoints": {
+		"main":[
+			"net.hyper.silliestlib.SilliestLibMain"
+		]
+	},
+	"mixins": [
+		"silliestlib.mixins.json"
+	],
 	"depends": {
 		"fabricloader": ">=0.19.5",
 		"minecraft": "26.1.2",
@@ -28,7 +36,6 @@
 				"Wiki": "https://github.com/HyperionDash/silliestlib/wiki"
 			},
 			"badges": [ "library" ]
-		},
-		"launchpad:compatible": true
+		}
 	}
 }
